@@ -3,9 +3,7 @@
 ## Sobre
 Projeto desenvolvido com o intuito implementar novas ferramentas decorrentes de estudos recentes.
 ## Infraestrutura
-Essa aplicação foi desenvolvida com banco de dados PostgreSQL.
-
-Nela fizemos o deploy da API no Heroku, onde podemos testas os endpoints com a collections disponibilizada na pasta `docs`.
+Nesta aplicação fizemos o deploy da API no Heroku, onde podemos testas os endpoints com a collections disponibilizada na pasta `docs`.
 
 Alem disso, documentamos a aplicação com o `Open API e Swagger`, onde disponibilizamos o arquivo `swagger.yaml` na pasta `docs`.
 
