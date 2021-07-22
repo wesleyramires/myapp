@@ -1,0 +1,717 @@
+openapi: 3.0.1
+info:
+  title: MyApp
+  description: 'MyApp API documentation. More MyApp info on [MyApp github project page](https://github.com/weesleyramires/myapp)'
+  contact:
+    email: weesleyramires@gmail.com
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+    description: Generated server url
+paths:
+  '/api/v1/person/{id}/update':
+    put:
+      tags:
+        - person-controller
+      operationId: editPerson
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDTOPersonResponseDTO'
+  '/api/v1/person/{idPerson}/contact/{idContact}/update':
+    put:
+      tags:
+        - contact-controller
+      operationId: editContact
+      parameters:
+        - name: idPerson
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: idContact
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDTOContactResponseDTO'
+  '/api/v1/person/{idPerson}/contact/register':
+    post:
+      tags:
+        - contact-controller
+      operationId: registerContact
+      parameters:
+        - name: idPerson
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDTOContactResponseDTO'
+  /api/v1/person/register:
+    post:
+      tags:
+        - person-controller
+      operationId: registerPerson
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDTOPersonResponseDTO'
+  /api/v1/person:
+    get:
+      tags:
+        - person-controller
+      operationId: listAll
+      parameters:
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDTOPagePersonResponseDTO'
+  '/api/v1/person/{id}':
+    get:
+      tags:
+        - person-controller
+      operationId: listPerson
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDTOPersonResponseDTO'
+  '/api/v1/person/{id}/delete':
+    delete:
+      tags:
+        - person-controller
+      operationId: editPerson_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDTOPersonResponseDTO'
+  '/api/v1/person/{idPerson}/contact/{idContact}/delete':
+    delete:
+      tags:
+        - contact-controller
+      operationId: deleteContact
+      parameters:
+        - name: idPerson
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: idContact
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseDTOContactResponseDTO'
+  /swagger-resources:
+    get:
+      tags:
+        - api-resource-controller
+      operationId: swaggerResources_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SwaggerResource'
+    put:
+      tags:
+        - api-resource-controller
+      operationId: swaggerResources_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SwaggerResource'
+    post:
+      tags:
+        - api-resource-controller
+      operationId: swaggerResources_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SwaggerResource'
+    delete:
+      tags:
+        - api-resource-controller
+      operationId: swaggerResources_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SwaggerResource'
+    options:
+      tags:
+        - api-resource-controller
+      operationId: swaggerResources
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SwaggerResource'
+    head:
+      tags:
+        - api-resource-controller
+      operationId: swaggerResources_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SwaggerResource'
+    patch:
+      tags:
+        - api-resource-controller
+      operationId: swaggerResources_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SwaggerResource'
+  /swagger-resources/configuration/ui:
+    get:
+      tags:
+        - api-resource-controller
+      operationId: uiConfiguration_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UiConfiguration'
+    put:
+      tags:
+        - api-resource-controller
+      operationId: uiConfiguration_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UiConfiguration'
+    post:
+      tags:
+        - api-resource-controller
+      operationId: uiConfiguration_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UiConfiguration'
+    delete:
+      tags:
+        - api-resource-controller
+      operationId: uiConfiguration_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UiConfiguration'
+    options:
+      tags:
+        - api-resource-controller
+      operationId: uiConfiguration
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UiConfiguration'
+    head:
+      tags:
+        - api-resource-controller
+      operationId: uiConfiguration_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UiConfiguration'
+    patch:
+      tags:
+        - api-resource-controller
+      operationId: uiConfiguration_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UiConfiguration'
+  /swagger-resources/configuration/security:
+    get:
+      tags:
+        - api-resource-controller
+      operationId: securityConfiguration_6
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecurityConfiguration'
+    put:
+      tags:
+        - api-resource-controller
+      operationId: securityConfiguration_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecurityConfiguration'
+    post:
+      tags:
+        - api-resource-controller
+      operationId: securityConfiguration_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecurityConfiguration'
+    delete:
+      tags:
+        - api-resource-controller
+      operationId: securityConfiguration_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecurityConfiguration'
+    options:
+      tags:
+        - api-resource-controller
+      operationId: securityConfiguration
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecurityConfiguration'
+    head:
+      tags:
+        - api-resource-controller
+      operationId: securityConfiguration_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecurityConfiguration'
+    patch:
+      tags:
+        - api-resource-controller
+      operationId: securityConfiguration_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecurityConfiguration'
+components:
+  schemas:
+    Contact:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+    PersonRequestDTO:
+      required:
+        - birthDate
+        - contact
+        - cpf
+        - name
+      type: object
+      properties:
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        cpf:
+          maxLength: 11
+          minLength: 11
+          type: string
+        birthDate:
+          type: string
+          format: date
+        contact:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+    ErrorResponseDTO:
+      type: object
+      properties:
+        field:
+          type: string
+        message:
+          type: string
+    PersonResponseDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        cpf:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        contact:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+    ResponseDTOPersonResponseDTO:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PersonResponseDTO'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorResponseDTO'
+    ContactRequestDTO:
+      required:
+        - email
+        - name
+        - phone
+      type: object
+      properties:
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        phone:
+          maxLength: 11
+          minLength: 11
+          type: string
+        email:
+          maxLength: 255
+          minLength: 0
+          type: string
+    ContactResponseDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        personId:
+          type: integer
+          format: int64
+    ResponseDTOContactResponseDTO:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ContactResponseDTO'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorResponseDTO'
+    Pageable:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+        sort:
+          $ref: '#/components/schemas/Sort'
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        paged:
+          type: boolean
+        unpaged:
+          type: boolean
+    Sort:
+      type: object
+      properties:
+        sorted:
+          type: boolean
+        unsorted:
+          type: boolean
+        empty:
+          type: boolean
+    PagePersonResponseDTO:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int64
+        size:
+          type: integer
+          format: int32
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonResponseDTO'
+        number:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/Sort'
+        numberOfElements:
+          type: integer
+          format: int32
+        pageable:
+          $ref: '#/components/schemas/Pageable'
+        first:
+          type: boolean
+        last:
+          type: boolean
+        empty:
+          type: boolean
+    ResponseDTOPagePersonResponseDTO:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PagePersonResponseDTO'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorResponseDTO'
+    SwaggerResource:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        swaggerVersion:
+          type: string
+        location:
+          type: string
+          deprecated: true
+    UiConfiguration:
+      type: object
+      properties:
+        deepLinking:
+          type: boolean
+        displayOperationId:
+          type: boolean
+        defaultModelsExpandDepth:
+          type: integer
+          format: int32
+        defaultModelExpandDepth:
+          type: integer
+          format: int32
+        defaultModelRendering:
+          type: string
+          enum:
+            - example
+            - model
+        displayRequestDuration:
+          type: boolean
+        docExpansion:
+          type: string
+          enum:
+            - none
+            - list
+            - full
+        filter:
+          type: object
+        maxDisplayedTags:
+          type: integer
+          format: int32
+        operationsSorter:
+          type: string
+          enum:
+            - alpha
+            - method
+        showExtensions:
+          type: boolean
+        tagsSorter:
+          type: string
+          enum:
+            - alpha
+        validatorUrl:
+          type: string
+        apisSorter:
+          type: string
+          deprecated: true
+        jsonEditor:
+          type: boolean
+          deprecated: true
+        showRequestHeaders:
+          type: boolean
+          deprecated: true
+        supportedSubmitMethods:
+          type: array
+          items:
+            type: string
+    SecurityConfiguration:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          deprecated: true
+        apiKeyVehicle:
+          type: string
+          deprecated: true
+        apiKeyName:
+          type: string
+          deprecated: true
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        realm:
+          type: string
+        appName:
+          type: string
+        scopeSeparator:
+          type: string
+        additionalQueryStringParams:
+          type: object
+          additionalProperties:
+            type: object
+        useBasicAuthenticationWithAccessCodeGrant:
+          type: boolean
